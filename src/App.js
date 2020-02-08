@@ -18,39 +18,39 @@ function App() {
         <Col xs={8} sm={8} md={8} lg={8}>
         <div id='board'>
           <div class='row'>
-            <div class='boggle'>A</div>
-            <div class='boggle'>B</div>
-            <div class='boggle'>C</div>
-            <div class='boggle'>D</div>
-            <div class='boggle'>E</div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
           </div>
           <div class='row'>
-            <div class='boggle'>A</div>
-            <div class='boggle'>B</div>
-            <div class='boggle'>C</div>
-            <div class='boggle'>D</div>
-            <div class='boggle'>E</div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
           </div>
           <div class='row'>
-            <div class='boggle'>A</div>
-            <div class='boggle'>B</div>
-            <div class='boggle'>C</div>
-            <div class='boggle'>D</div>
-            <div class='boggle'>E</div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
           </div>
           <div class='row'>
-            <div class='boggle'>A</div>
-            <div class='boggle'>B</div>
-            <div class='boggle'>C</div>
-            <div class='boggle'>D</div>
-            <div class='boggle'>E</div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
           </div>
           <div class='row'>
-            <div class='boggle'>A</div>
-            <div class='boggle'>B</div>
-            <div class='boggle'>C</div>
-            <div class='boggle'>D</div>
-            <div class='boggle'>E</div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
+            <div class='boggle'><span>A</span></div>
           </div>
         </div>
           

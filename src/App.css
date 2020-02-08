@@ -54,32 +54,45 @@ body {
 }
 
 #board {
-  border: 4px solid #18B9BB;
-  border-radius: 4px;
-  background: #024144;
-  padding: 4px;
+  border: 8px solid #6FEBD6;
+  border-radius: 8px;
+  background: #009EA1;
+  padding: 8px;
 }
 
 .row {
   display: flex;
   text-align: center;
   flex-direction: row;
-  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .boggle {
   width: 80px; 
   height: 80px;
-  border-radius: 4px;
+  border-radius: 5px;
   background: #FFFFFF;
-  box-shadow: -4px 2px 8px 1px rgba(0,0,0,0,.69);
   flex: 1 1 auto;
-  margin: 4px;
+  margin: 5px;
 
 }
 
 .boggle:hover {
   cursor: pointer;
+}
+
+
+.boggle.selected {
+  background-color: #F6DD45;
+}
+
+.boggle span {
+  font-weight: bold;
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #score-table {
