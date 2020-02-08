@@ -1,0 +1,21 @@
+
+
+
+  
+#scoreboard {
+    align-self: left;
+    border: 5px solid #FFCA08;
+    border-radius: 8px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#scoreboard td, #scoreboard th {
+    border: 5px solid #FFCA08;
+    background-color: white;
+    padding: 5px;
+}
+
+#scoreboard tr#footer td {
+    background-color: #ACCEEC;
+}

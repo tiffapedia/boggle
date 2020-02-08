@@ -1,0 +1,26 @@
+  
+.letter {
+    width: 80px; 
+    height: 80px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    flex: 1 1 auto;
+    margin: 5px;
+}
+
+.letter:hover {
+    cursor: pointer;
+}
+
+
+.letter.selected {
+    background-color: #F6DD45;
+}
+
+.letter span {
+    font-weight: bold;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

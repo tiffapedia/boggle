@@ -1,87 +1,30 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
+import Board from './components/board/Board.js';
+import Scoreboard from './components/scoreboard/Scoreboard.js';
 
-import './App.css';
-import BoggleLogo from './images/logo.png';
+import './assets/css/Global.css';
+import letterLogo from './images/logo.png';
 
 function App() {
   return (
-    <div className='content'>        
-      <img src={BoggleLogo} className='center-align logo' />
-      <div className='padding'/>
-      <div className='outer-center-align'>      
+    <div className='content'>
+      <img src={letterLogo} className='center-align logo' />
+      <div className='pb1' />
+      <div className='outer-center-align'>
         <div id='current-word'>Current Word</div>
         <div className='button'>Submit</div>
       </div>
-      <div className='padding'/>
+      <div className='pb1' />
       <Row>
         <Col xs={8} sm={8} md={8} lg={8}>
-        <div id='board'>
-          <div class='row'>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-          </div>
-          <div class='row'>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-          </div>
-          <div class='row'>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-          </div>
-          <div class='row'>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-          </div>
-          <div class='row'>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-            <div class='boggle'><span>A</span></div>
-          </div>
-        </div>
-          
+          <Board />
         </Col>
         <Col xs={4} sm={4} md={4} lg={4}>
-        <table id="score-table">
-          <tr>
-            <th>Word </th>
-            <th>Score</th>
-          </tr>
-          <tr>
-            <td>congruent</td>
-            <td>11</td>
-          </tr>
-          <tr>
-            <td>urgent</td>
-            <td>3</td>
-          </tr>
-          <tr id="footer">
-            <td>Total </td>
-            <td>14</td>
-          </tr>
-        </table>
+          <Scoreboard />
         </Col>
-
-
       </Row>
     </div>
-
-
-    
   );
 }
 
@@ -90,7 +33,7 @@ export default App;
 /*
     <Grid fluid className='page'>
       <Row>
-        <img src={BoggleLogo} className='center-align logo' />
+        <img src={letterLogo} className='center-align logo' />
       </Row>
       <Row>
         <div className='center-align'>

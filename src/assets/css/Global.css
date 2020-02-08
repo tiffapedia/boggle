@@ -1,0 +1,68 @@
+/* General */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+  
+  }
+  
+  /* Padding */
+  
+  .pb1 {
+    padding-bottom: 1em;
+  }
+  
+  /* Alignment */
+  
+  .outer-center-align {
+    text-align: center;
+  }
+  
+  .center-align {
+    display: block;
+    margin-left:  auto;
+    margin-right: auto;
+  }
+  
+  /* Containers */
+  
+  .content {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 80px;
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  
+  /* Components */
+  
+  .logo {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  
+  #current-word {
+    border-bottom: 1px solid #000;
+    padding: 4px 24px;
+    display: inline-block;
+    min-width: 140px;
+    margin-right: 24px;
+    text-align: left;
+  }
+  
+  .button {
+    display: inline-block;
+    background-color: #CA0500;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 4px 24px;
+  }
+  
+  /* phone */
+  @media only screen and (max-width: 480px) {
+  
+  }

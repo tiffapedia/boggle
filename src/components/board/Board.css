@@ -1,0 +1,14 @@
+#board {
+    border: 8px solid #6FEBD6;
+    border-radius: 8px;
+    background: #009EA1;
+    padding: 8px;
+}
+  
+.row {
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    padding-left: 8px;
+    padding-right: 8px;
+}
