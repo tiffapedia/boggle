@@ -55,8 +55,25 @@ function App() {
         </div>
           
         </Col>
-        <Col xs={4} sm={4} md={4} lg={4} style={{background: 'blue'}}>
-          Grid
+        <Col xs={4} sm={4} md={4} lg={4}>
+        <table id="score-table">
+          <tr>
+            <th>Word </th>
+            <th>Score</th>
+          </tr>
+          <tr>
+            <td>congruent</td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <td>urgent</td>
+            <td>3</td>
+          </tr>
+          <tr id="footer">
+            <td>Total </td>
+            <td>14</td>
+          </tr>
+        </table>
         </Col>
 
 

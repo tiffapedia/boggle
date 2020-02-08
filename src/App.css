@@ -96,7 +96,21 @@ body {
 }
 
 #score-table {
-  background-color: blue;
+  align-self: left;
+  border: 5px solid #FFCA08;
+  border-radius: 8px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+#score-table td, #score-table th {
+  border: 5px solid #FFCA08;
+  background-color: white;
+  padding: 5px;
+}
+
+#score-table tr#footer td {
+  background-color: #ACCEEC;
 }
 
 
