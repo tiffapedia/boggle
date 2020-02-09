@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Letter from '../letter/Letter';
+import Die from '../die/Die';
 import './Board.css';
 import dice from '../../assets/data/dice.json';
 
@@ -29,7 +29,7 @@ class Board extends Component {
   constructor() {
     super();
     this.state = {
-      letters: [],
+      dice: [],
     };
   }
 
@@ -44,36 +44,51 @@ class Board extends Component {
       <div id='board'>
         <div className='row'>
           {
-            this.state.letters.slice(0, 5).map((l, i) => {
-              return <Letter letter={l.letter} />
+            this.state.dice.slice(0, 5).map((die, i) => {
+              return <Die
+                die={die}
+                onClick={this.onLetterClick}
+              />
             })
           }
         </div>
         <div className='row'>
           {
-            this.state.letters.slice(5, 10).map((l, i) => {
-              return <Letter letter={l.letter} />
+            this.state.dice.slice(5, 10).map((die, i) => {
+              return <Die
+                die={die}
+                onClick={this.onLetterClick}
+              />
             })
           }
         </div>
         <div className='row'>
           {
-            this.state.letters.slice(10, 15).map((l, i) => {
-              return <Letter letter={l.letter} />
+            this.state.dice.slice(10, 15).map((die, i) => {
+              return <Die
+                die={die}
+                onClick={this.onDieClick}
+              />
             })
           }
         </div>
         <div className='row'>
           {
-            this.state.letters.slice(15, 20).map((l, i) => {
-              return <Letter letter={l.letter} />
+            this.state.dice.slice(15, 20).map((die, i) => {
+              return <Die
+                die={die}
+                onClick={this.onDieClick}
+              />
             })
           }
         </div>
         <div className='row'>
           {
-            this.state.letters.slice(20, 25).map((l, i) => {
-              return <Letter letter={l.letter} />
+            this.state.dice.slice(20, 25).map((die, i) => {
+              return <Die
+                die={die}
+                onClick={this.onDieClick}
+              />
             })
           }
         </div>
@@ -115,8 +130,13 @@ class Board extends Component {
         })
       }
     }
+
     console.log('load letters', letters);
-    this.setState({ letters: letters });
+    this.setState({ dice: letters });
+  }
+
+  onDieClick() {
+
   }
 }
 export default Board;
