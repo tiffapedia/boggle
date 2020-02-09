@@ -4,11 +4,19 @@
     background: #009EA1;
     padding: 8px;
 }
-  
+
 .row {
     display: flex;
-    text-align: center;
     flex-direction: row;
     padding-left: 8px;
     padding-right: 8px;
+}
+
+
+  
+/* phone */
+@media only screen and (max-width: 480px) {
+  #board {
+      padding: 3.5px;
+  }
 }

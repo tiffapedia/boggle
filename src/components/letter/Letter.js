@@ -6,7 +6,7 @@ class Letter extends React.Component {
   render() {
     return (
       <div class='letter'>
-        <span>A</span>
+        <span>{this.props.letter}</span>
       </div>
     )
   }

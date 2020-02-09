@@ -18,9 +18,18 @@
 }
 
 .letter span {
-    font-weight: bold;
     display: block;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* phone */
+@media only screen and (max-width: 480px) {
+    .letter {
+        width: 35px;
+        height: 35px;
+    }
 }
