@@ -3,18 +3,12 @@
     width: 80px; 
     height: 80px;
     border-radius: 5px;
-    background: #FFFFFF;
     flex: 1 1 auto;
     margin: 5px;
 }
 
 .die:hover {
     cursor: pointer;
-}
-
-
-.die.selected {
-    background-color: #F6DD45;
 }
 
 .die span {
