@@ -37,7 +37,14 @@ class Board extends Component {
 
   componentWillMount() {
     // load letters before rendering
-    this.loadLetters();
+    this.loadNewBoard();
+  }
+
+  componentWillReceiveProps(props) {
+    // reset board
+    if (this.props.resetBoard) {
+      this.resetBoard();
+    }
   }
 
   render() {
@@ -105,7 +112,7 @@ class Board extends Component {
     )
   }
 
-  loadLetters = () => {
+  loadNewBoard = () => {
 
     // 5x5 = 25 dices total on board
     const numDices = dice.length;
@@ -131,12 +138,14 @@ class Board extends Component {
           letter: 'Qu',
           key: letters.length,
           clickable: true,
+          isSelected: false,
         })
       } else {
         letters.push({
           letter: dice[randomDie][randomFace].toUpperCase(),
           key: letters.length,
           clickable: true,
+          isSelected: false,
         })
       }
     }
@@ -150,7 +159,7 @@ class Board extends Component {
 
     if (die.clickable) {
       // make adjacent dice clickable
-      this.makeAdjacentDiceClickable(die, this.state.currentKeys);
+      this.makeAdjacentDiceClickable(die, this.state.currentKeys, true);
       // add die's letter to current word
       var currentKeys = this.state.currentKeys.slice();
       currentKeys.push(die.key);
@@ -173,7 +182,7 @@ class Board extends Component {
     } else {
       const lastDie = this.state.dice[lastDieIndex];
       const actualCurrentKeys = this.state.currentKeys.slice(0, this.state.currentKeys.indexOf(lastDie.key));
-      this.makeAdjacentDiceClickable(lastDie, actualCurrentKeys);
+      this.makeAdjacentDiceClickable(lastDie, actualCurrentKeys, false);
     }
     // set state
     this.setState({ currentKeys: currentKeys });
@@ -185,7 +194,7 @@ class Board extends Component {
     }
   }
 
-  makeAdjacentDiceClickable(die, actualCurrentKeys) {
+  makeAdjacentDiceClickable(die, actualCurrentKeys, isSelected) {
 
     // enable adjacent dice but for 
     // 1. top row: do not enable anything up (up, up left, up right)
@@ -244,6 +253,11 @@ class Board extends Component {
       } else {
         die.clickable = false;
       }
+
+      if (die.key === key) {
+        die.isSelected = isSelected;
+      }
+
     });
 
     // update clickable state
@@ -255,9 +269,14 @@ class Board extends Component {
     var dice = this.state.dice.slice();
     dice.forEach((die, dieIndex) => {
       die.clickable = true;
+      die.isSelected = false;
     });
     this.setState({ dice: dice });
+  }
 
+  resetBoard = () => {
+    console.log('reset board');
+    this.makeAllDiceClickable();
   }
 
 }

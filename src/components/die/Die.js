@@ -7,7 +7,6 @@ class Die extends React.Component {
     super();
     this.state = {
       isSelected: false,
-      backgroundColor: '#FFFFFF',
     };
   }
 
@@ -17,7 +16,7 @@ class Die extends React.Component {
         className='die'
         onClick={this.onClick}
         style={{
-          backgroundColor: this.state.backgroundColor,
+          backgroundColor: this.props.die.isSelected ? '#F6DD45' : '#FFFFFF',
           cursor: this.props.die.clickable ? 'pointer' : 'default',
         }}
       >
@@ -29,16 +28,10 @@ class Die extends React.Component {
   onClick = () => {
     if (this.props.die.clickable) {
       if (!this.state.isSelected) {
-        this.setState({
-          isSelected: true,
-          backgroundColor: '#F6DD45',
-        });
+        this.setState({ isSelected: true });
         this.props.addToCurrentWord(this.props.die);
       } else {
-        this.setState({
-          isSelected: false,
-          backgroundColor: '#FFFFFF',
-        })
+        this.setState({ isSelected: false });
         this.props.removeFromCurrentWord(this.props.die);
       }
     }

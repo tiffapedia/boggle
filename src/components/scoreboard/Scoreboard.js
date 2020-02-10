@@ -17,7 +17,7 @@ class Scoreboard extends React.Component {
             <th>Score</th>
           </tr>
           {
-            this.props.words.map((word, i) => {
+            this.props.words.slice().map((word, i) => {
               return (
                 <tr>
                   <td>{word}</td>

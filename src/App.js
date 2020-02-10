@@ -26,7 +26,8 @@ class App extends Component {
       words: [],
       scores: [],
       totalScore: 0,
-      isInvalid: false,
+      errorMsg: '',
+      resetBoard: false,
     };
   }
 
@@ -37,7 +38,7 @@ class App extends Component {
         <div className='pb1' />
         <div className='outer-center-align'>
           <div>
-            {this.state.isInvalid ? `${this.props.currentWord} is not a valid word` : ''}
+            {this.state.errorMsg}
           </div>
           <div id='current-word'>
             {this.state.currentWord.length == 0 ? 'Current Word' : this.state.currentWord}
@@ -51,6 +52,7 @@ class App extends Component {
             <Board
               currentWord={this.state.currentWord}
               changeCurrentWord={this.changeCurrentWord}
+              resetBoard={this.state.resetBoard}
             />
           </Col>
           <Col xs={10} sm={10} md={3} lg={3}>
@@ -69,57 +71,55 @@ class App extends Component {
   changeCurrentWord = (currentWord) => {
     console.log('changeCurrentWord', currentWord);
     this.setState({ currentWord: currentWord });
-    if (this.state.isInvalid) {
-      this.setState({ isInvalid: false });
+    if (this.state.errorMsg.length > 0) {
+      this.setState({ errorMsg: '' });
+    }
+    if (this.state.resetBoard) {
+      this.setState({ resetBoard: false });
     }
   }
 
   submitWord = () => {
     console.log('submitWord', this.state.currentWord);
-    var isInvalid = false;
+    if (this.state.currentWord.length > 0) {
 
-    axios({
-      method: 'get',
-      url: `https://wordsapiv1.p.mashape.com/words/${this.state.currentWord}/definitions`,
-      headers: {
-        "X-Mashape-Key": "Wybi9HM9oymshDPqZtPamRYHDZnOp1fD3y0jsnpHO6nHH78GMt",
-        "X-Mashape-Host": "wordsapiv1.p.mashape.com"
-      }
-    }).then((res) => {
-      //only get word with definitions
-      if (res.data.definitions) {
-        // this is a valid word
-        console.log('valid word: ', this.state.currentWord);
-      }
-      console.log(res)
-    }).catch(err => {
-      // this is an invalid word
-      console.log('invalid word: ', this.state.currentWord);
-      isInvalid = true;
-    })
-
-    if (isInvalid) {
-      this.setState({ isInvalid: isInvalid });
-    } else {
-      // append to list of words
-      var words = this.state.words.splice();
-      words.push(this.state.currentWord.charAt(0) + this.state.currentWord.slice(1).toLowerCase());
-      // calculate current word's score
-      const currentWordScore = this.calculateScore(this.state.currentWord);
-      // append to list of scores
-      var scores = this.state.scores.splice();
-      scores.push(currentWordScore);
-      var totalScore = this.state.totalScore + currentWordScore;
-      this.setState({
-        words: words,
-        currentWord: '',
-        scores: scores,
-        totalScore: totalScore,
-      });
-
-      // reset board
+      axios({
+        method: 'get',
+        url: `https://wordsapiv1.p.mashape.com/words/${this.state.currentWord}/definitions`,
+        headers: {
+          "X-Mashape-Key": "Wybi9HM9oymshDPqZtPamRYHDZnOp1fD3y0jsnpHO6nHH78GMt",
+          "X-Mashape-Host": "wordsapiv1.p.mashape.com"
+        }
+      }).then((res) => {
+        //only get word with definitions
+        if (res.data.definitions) {
+          // this is a valid word
+          console.log('valid word: ', this.state.currentWord);
+          // append to list of words
+          var words = this.state.words.slice();
+          words.push(this.state.currentWord.charAt(0) + this.state.currentWord.slice(1).toLowerCase());
+          console.log('words', words);
+          // calculate current word's score
+          const currentWordScore = this.calculateScore(this.state.currentWord);
+          // append to list of scores
+          var scores = this.state.scores.slice();
+          scores.push(currentWordScore);
+          var totalScore = this.state.totalScore + currentWordScore;
+          this.setState({
+            words: words,
+            currentWord: '',
+            scores: scores,
+            totalScore: totalScore,
+            resetBoard: true,
+          });
+        }
+        console.log(res)
+      }).catch(err => {
+        // this is an invalid word
+        console.log('invalid word');
+        this.setState({ errorMsg: `${this.state.currentWord} is an invalid word` });
+      })
     }
-
 
   }
 
