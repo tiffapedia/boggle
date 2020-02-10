@@ -21,7 +21,9 @@ class App extends Component {
         <img src={letterLogo} alt='boggle logo' className='center-align logo' />
         <div className='pb1' />
         <div className='outer-center-align'>
-          <div id='current-word'>{this.state.currentWord}</div>
+          <div id='current-word'>
+            {this.state.currentWord.length == 0 ? 'Current Word' : this.state.currentWord}
+          </div>
           <div className='button'>Submit</div>
         </div>
         <div className='pb1' />

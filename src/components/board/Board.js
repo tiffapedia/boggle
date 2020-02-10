@@ -165,7 +165,7 @@ class Board extends Component {
 
     // remove die's letter from current word
     var currentKeys = this.state.currentKeys.slice();
-    currentKeys.pop();
+    const removeDieIndex = currentKeys.pop();
     // make adjacent dice clickable
     const lastDieIndex = currentKeys[currentKeys.length - 1];
     if (lastDieIndex == undefined) {
@@ -177,7 +177,12 @@ class Board extends Component {
     }
     // set state
     this.setState({ currentKeys: currentKeys });
-    this.props.changeCurrentWord(this.props.currentWord.slice(0, -1));
+    const removeDie = this.state.dice[removeDieIndex];
+    if (removeDie.letter === 'Qu') {
+      this.props.changeCurrentWord(this.props.currentWord.slice(0, -2));
+    } else {
+      this.props.changeCurrentWord(this.props.currentWord.slice(0, -1));
+    }
   }
 
   makeAdjacentDiceClickable(die, actualCurrentKeys) {

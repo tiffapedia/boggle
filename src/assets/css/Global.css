@@ -45,13 +45,16 @@ body {
     padding-bottom: 1em;
   }
   
-  #current-word {
-    border-bottom: 1px solid #000;
+  #current-word {    
+    background-color: rgba(0,0,0,0.65);
+    color: #FFFFFF;
+    border-radius: 4px;
     padding: 4px 24px;
     display: inline-block;
     min-width: 140px;
     margin-right: 24px;
     text-align: left;
+    text-transform: uppercase;
   }
   
   .button {
