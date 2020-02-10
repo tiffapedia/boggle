@@ -20,3 +20,14 @@
 #scoreboard tr#footer td {
     background-color: #A4FFFF;
 }
+
+/* phone */
+@media only screen and (max-width: 480px) {
+    #scoreboard-container {
+        margin-top: 20px;
+        width: 100%;
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+}

@@ -61,7 +61,18 @@ class App extends Component {
               resetBoard={this.state.resetBoard}
             />
           </Col>
-          <Col xs={10} sm={10} md={3} lg={3}>
+          <Col xs={10} sm={10} md={3} lg={3} className='no-show-mobile'>
+            <Scoreboard
+              words={this.state.words}
+              scores={this.state.scores}
+              totalScore={this.state.totalScore}
+            />
+          </Col>
+          <Col xs={1} sm={1} md={0} lg={0} />
+        </Row>
+        <Row style={{ padding: '0' }} className='no-show-desktop'>
+          <Col xs={1} sm={1} md={0} lg={0} />
+          <Col xs={10} sm={10} md={3} lg={3} >
             <Scoreboard
               words={this.state.words}
               scores={this.state.scores}

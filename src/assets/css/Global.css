@@ -65,11 +65,27 @@ body {
     padding: 4px 24px;
   }
 
+  .no-show-desktop {
+    display: none;
+  }
+
+  .no-show-mobile {
+    display: block;
+  }
+
   
 /* phone */
 @media only screen and (max-width: 480px) {
   .content {
     padding-right: 0px;
     padding-left: 0px;
+  }
+
+  .no-show-mobile {
+    display: none;
+  }
+
+  .no-show-desktop {
+    display: block;
   }
 }
