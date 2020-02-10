@@ -16,7 +16,10 @@ class Die extends React.Component {
       <div
         className='die'
         onClick={this.onClick}
-        style={{ backgroundColor: this.state.backgroundColor }}
+        style={{
+          backgroundColor: this.state.backgroundColor,
+          cursor: this.props.die.clickable ? 'pointer' : 'default',
+        }}
       >
         <span>{this.props.die.letter}</span>
       </div>
