@@ -119,6 +119,8 @@ class App extends Component {
         console.log('invalid word');
         this.setState({ errorMsg: `${this.state.currentWord} is an invalid word` });
       })
+    } else {
+      console.log('current word is empty');
     }
 
   }

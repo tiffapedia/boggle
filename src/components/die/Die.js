@@ -10,13 +10,20 @@ class Die extends React.Component {
     };
   }
 
+  componentWillReceiveProps(props) {
+    // reset board
+    if (props.resetBoard) {
+      this.setState({ isSelected: false })
+    }
+  }
+
   render() {
     return (
       <div
         className='die'
         onClick={this.onClick}
         style={{
-          backgroundColor: this.props.die.isSelected ? '#F6DD45' : '#FFFFFF',
+          backgroundColor: this.state.isSelected ? '#F6DD45' : '#FFFFFF',
           cursor: this.props.die.clickable ? 'pointer' : 'default',
         }}
       >
