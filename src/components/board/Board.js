@@ -29,7 +29,7 @@ class Board extends Component {
   constructor() {
     super();
     this.state = {
-      // die: { letter, key (die's index on grid), clickable }
+      // die: { letter, key (die's index on grid), clickable, isSelected }
       dice: [],
       currentKeys: [],
     };
@@ -60,7 +60,6 @@ class Board extends Component {
                 die={die}
                 addToCurrentWord={this.addToCurrentWord}
                 removeFromCurrentWord={this.removeFromCurrentWord}
-                resetBoard={this.props.resetBoard}
               />
             })
           }
@@ -72,7 +71,6 @@ class Board extends Component {
                 die={die}
                 addToCurrentWord={this.addToCurrentWord}
                 removeFromCurrentWord={this.removeFromCurrentWord}
-                resetBoard={this.props.resetBoard}
               />
             })
           }
@@ -84,7 +82,6 @@ class Board extends Component {
                 die={die}
                 addToCurrentWord={this.addToCurrentWord}
                 removeFromCurrentWord={this.removeFromCurrentWord}
-                resetBoard={this.props.resetBoard}
               />
             })
           }
@@ -96,7 +93,6 @@ class Board extends Component {
                 die={die}
                 addToCurrentWord={this.addToCurrentWord}
                 removeFromCurrentWord={this.removeFromCurrentWord}
-                setStateForDieSelection={this.setStateForDieSelection}
               />
             })
           }
@@ -108,7 +104,6 @@ class Board extends Component {
                 die={die}
                 addToCurrentWord={this.addToCurrentWord}
                 removeFromCurrentWord={this.removeFromCurrentWord}
-                resetBoard={this.props.resetBoard}
               />
             })
           }
@@ -166,6 +161,7 @@ class Board extends Component {
     if (die.clickable) {
       // make adjacent dice clickable
       this.makeAdjacentDiceClickable(die, this.state.currentKeys);
+      this.setDieSelectionState(die.key, true);
       // add die's letter to current word
       var currentKeys = this.state.currentKeys.slice();
       currentKeys.push(die.key);
@@ -189,15 +185,16 @@ class Board extends Component {
       const lastDie = this.state.dice[lastDieIndex];
       const actualCurrentKeys = this.state.currentKeys.slice(0, this.state.currentKeys.indexOf(lastDie.key));
       this.makeAdjacentDiceClickable(lastDie, actualCurrentKeys);
+      this.setDieSelectionState(this.state.dice[removeDieIndex].key, false);
     }
     // set state
-    this.setState({ currentKeys: currentKeys });
     const removeDie = this.state.dice[removeDieIndex];
     if (removeDie.letter === 'Qu') {
       this.props.changeCurrentWord(this.props.currentWord.slice(0, -2));
     } else {
       this.props.changeCurrentWord(this.props.currentWord.slice(0, -1));
     }
+    this.setState({ currentKeys: currentKeys });
   }
 
   makeAdjacentDiceClickable(die, actualCurrentKeys) {
@@ -264,6 +261,16 @@ class Board extends Component {
     // update clickable state
     this.setState({ dice: dice })
     console.log('makeAdjacentDiceClickable', die.key, dice);
+  }
+
+  setDieSelectionState = (key, isSelected) => {
+    var dice = this.state.dice.slice();
+    dice.forEach((die, dieIndex) => {
+      if (die.key === key) {
+        die.isSelected = isSelected;
+      }
+    });
+    this.setState({ dice: dice })
   }
 
   makeAllDiceClickable = () => {

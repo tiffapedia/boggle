@@ -16,7 +16,13 @@ const wordsAPI = axios.create({
   }
 });
 
-
+/* 
+TODO: 
+1. handle case when same word is submitted twice
+2. add a clear word button
+3. add a new board button
+4. add a timer
+*/
 class App extends Component {
 
   constructor() {
