@@ -23,6 +23,10 @@ class App extends Component {
     super();
     this.state = {
       currentWord: '',
+      words: [],
+      scores: [],
+      totalScore: 0,
+      isInvalid: false,
     };
   }
 
@@ -32,6 +36,9 @@ class App extends Component {
         <img src={letterLogo} alt='boggle logo' className='center-align logo' />
         <div className='pb1' />
         <div className='outer-center-align'>
+          <div>
+            {this.state.isInvalid ? `${this.props.currentWord} is not a valid word` : ''}
+          </div>
           <div id='current-word'>
             {this.state.currentWord.length == 0 ? 'Current Word' : this.state.currentWord}
           </div>
@@ -46,8 +53,12 @@ class App extends Component {
               changeCurrentWord={this.changeCurrentWord}
             />
           </Col>
-          <Col xs={10} sm={10} md={4} lg={4}>
-            <Scoreboard />
+          <Col xs={10} sm={10} md={3} lg={3}>
+            <Scoreboard
+              words={this.state.words}
+              scores={this.state.scores}
+              totalScore={this.state.totalScore}
+            />
           </Col>
           <Col xs={1} sm={1} md={0} lg={0} />
         </Row>
@@ -58,10 +69,14 @@ class App extends Component {
   changeCurrentWord = (currentWord) => {
     console.log('changeCurrentWord', currentWord);
     this.setState({ currentWord: currentWord });
+    if (this.state.isInvalid) {
+      this.setState({ isInvalid: false });
+    }
   }
 
   submitWord = () => {
     console.log('submitWord', this.state.currentWord);
+    var isInvalid = false;
 
     axios({
       method: 'get',
@@ -74,13 +89,63 @@ class App extends Component {
       //only get word with definitions
       if (res.data.definitions) {
         // this is a valid word
-        console.log(this.state.currentWord, 'is a valid word');
+        console.log('valid word: ', this.state.currentWord);
       }
+      console.log(res)
     }).catch(err => {
-      console.log(this.state.currentWord, 'is an INVALID word');
+      // this is an invalid word
+      console.log('invalid word: ', this.state.currentWord);
+      isInvalid = true;
     })
 
+    if (isInvalid) {
+      this.setState({ isInvalid: isInvalid });
+    } else {
+      // append to list of words
+      var words = this.state.words.splice();
+      words.push(this.state.currentWord.charAt(0) + this.state.currentWord.slice(1).toLowerCase());
+      // calculate current word's score
+      const currentWordScore = this.calculateScore(this.state.currentWord);
+      // append to list of scores
+      var scores = this.state.scores.splice();
+      scores.push(currentWordScore);
+      var totalScore = this.state.totalScore + currentWordScore;
+      this.setState({
+        words: words,
+        currentWord: '',
+        scores: scores,
+        totalScore: totalScore,
+      });
 
+      // reset board
+    }
+
+
+  }
+
+  calculateScore = (word) => {
+    console.log('calculateScore', word);
+    const numLetters = word.length;
+    switch (numLetters) {
+      case 0:
+        return 0;
+      case 1:
+        return 0;
+      case 2:
+        return 0;
+      case 3:
+        return 1;
+      case 4:
+        return 1;
+      case 5:
+        return 2;
+      case 6:
+        return 3;
+      case 7:
+        return 5;
+      default:
+        return 11;
+    }
   }
 
 }

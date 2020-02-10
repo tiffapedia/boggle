@@ -1,21 +1,22 @@
-
-
-
-  
-#scoreboard {
-    align-self: left;
-    border: 5px solid #FFCA08;
+#scoreboard-container {
+    border: 8px solid #FFCA08;
     border-radius: 8px;
+    margin-top: 1px;
+}
+
+#scoreboard {
+    width: 100%;
+    border: none;
     border-collapse: collapse;
     text-align: left;
 }
 
 #scoreboard td, #scoreboard th {
-    border: 5px solid #FFCA08;
+    border: 1px solid #FFCA08;
     background-color: white;
-    padding: 5px;
+    padding: 4px 7px;
 }
 
 #scoreboard tr#footer td {
-    background-color: #ACCEEC;
+    background-color: #A4FFFF;
 }
