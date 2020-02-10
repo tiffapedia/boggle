@@ -29,7 +29,7 @@ class Board extends Component {
   constructor() {
     super();
     this.state = {
-      // die: letter, key, clickable
+      // die: { letter, key (die's index on grid), clickable }
       dice: [],
       currentKeys: [],
     };

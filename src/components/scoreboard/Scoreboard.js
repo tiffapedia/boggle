@@ -2,6 +2,12 @@ import React from 'react';
 import './Scoreboard.css';
 
 class Scoreboard extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      words: [],
+    };
+  }
   render() {
     return (
       <table id="scoreboard">
