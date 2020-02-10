@@ -50,6 +50,7 @@ class App extends Component {
             {this.state.currentWord.length == 0 ? 'Current Word' : this.state.currentWord}
           </div>
           <div className='button' onClick={this.submitWord}>Submit</div>
+          <div className='clear-button' onClick={this.clearWord}>Clear Word</div>
         </div>
         <div className='pb1' />
         <Row style={{ padding: '0' }}>
@@ -164,6 +165,18 @@ class App extends Component {
         return 5;
       default:
         return 11;
+    }
+  }
+
+  clearWord = () => {
+    console.log('clearWord', this.state.currentWord);
+    if (this.state.currentWord.length > 0) {
+      this.setState({
+        currentWord: '',
+        resetBoard: true,
+      })
+    } else {
+      console.log('current word is empty');
     }
   }
 

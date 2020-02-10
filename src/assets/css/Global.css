@@ -52,7 +52,7 @@ body {
     padding: 4px 24px;
     display: inline-block;
     min-width: 140px;
-    margin-right: 24px;
+    margin-right: 10px;
     text-align: left;
     text-transform: uppercase;
   }
@@ -63,7 +63,16 @@ body {
     color: #FFFFFF;
     border-radius: 4px;
     padding: 4px 24px;
+    margin-right: 10px;
   }
+
+  .clear-button {
+    display: inline-block;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 4px 24px;
+  }
+
 
   .no-show-desktop {
     display: none;
