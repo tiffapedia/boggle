@@ -11,12 +11,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentWord: 'boggle',
+      currentWord: '',
     };
-  }
-
-  changeCurrentWord(currentWord) {
-    this.setState({ currentWord: currentWord });
   }
 
   render() {
@@ -44,6 +40,11 @@ class App extends Component {
         </Row>
       </div>
     );
+  }
+
+  changeCurrentWord = (currentWord) => {
+    console.log('changeCurrentWord', currentWord);
+    this.setState({ currentWord: currentWord });
   }
 }
 

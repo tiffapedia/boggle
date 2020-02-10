@@ -7,10 +7,6 @@
     margin: 5px;
 }
 
-.die:hover {
-    cursor: pointer;
-}
-
 .die span {
     display: block;
     position: relative;
