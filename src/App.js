@@ -115,13 +115,13 @@ class App extends Component {
           console.log('valid word: ', this.state.currentWord);
           // append to list of words
           var words = this.state.words.slice();
-          words.push(this.state.currentWord.charAt(0) + this.state.currentWord.slice(1).toLowerCase());
+          words.unshift(this.state.currentWord.charAt(0) + this.state.currentWord.slice(1).toLowerCase());
           console.log('words', words);
           // calculate current word's score
           const currentWordScore = this.calculateScore(this.state.currentWord);
           // append to list of scores
           var scores = this.state.scores.slice();
-          scores.push(currentWordScore);
+          scores.unshift(currentWordScore);
           var totalScore = this.state.totalScore + currentWordScore;
           this.setState({
             words: words,
